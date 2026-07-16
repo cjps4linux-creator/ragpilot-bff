@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Document {
+  id         Int      @id @default(autoincrement())
+  title      String
+  sourceType String   @default("meeting_note")
+  rawText    String
+  author     String?
+  createdAt  DateTime @default(now())
+}
+
+model Chunk {
+  id         Int      @id @default(autoincrement())
+  docId      Int
+  text       String
+  embedding  String // JSON array of floats
+  sourceType String
+  entity     String?
+  author     String?
+}
