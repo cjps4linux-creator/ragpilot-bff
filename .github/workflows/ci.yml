@@ -11,7 +11,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
+        env:
+          PRISMA_SKIP_POSTINSTALL_GENERATE: "1"
       - run: npx prisma generate
       - run: npx prisma db push --skip-generate
       - run: npm run lint
