@@ -1,6 +1,6 @@
 /**
  * Deterministic hashed bag-of-words embedder (mirrors ragpilot MOCK_MODE).
- * Lexical similarity only — the same ceiling the Python reference admits.
+ * Lexical similarity only  -  the same ceiling the Python reference admits.
  * Swap for a real embedder (e.g. @xenova/transformers) by replacing embed().
  */
 const EMBED_DIM = 384;

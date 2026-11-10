@@ -20,7 +20,7 @@ async function seed() {
     for (let i = 0; i < words.length; i += 240) {
       const text = words.slice(i, i + 240).join(' ');
       await prisma.chunk.create({
-        data: { docId: doc.id, text, embedding: JSON.stringify(embed(text)),
+        data: { docId: doc.[lorem], text, embedding: JSON.stringify(embed(text)),
           sourceType: d.sourceType, author: d.author,
           entity: /([A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,2})/.exec(text)?.[1] ?? null },
       });

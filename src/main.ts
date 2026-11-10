@@ -4,6 +4,6 @@ async function bootstrap() {
   const app = await createApp();
   const port = parseInt(process.env.PORT || '3000', 10);
   await app.listen(port);
-  console.log(`ragpilot-bff on :${port} — Swagger at /docs`);
+  console.log(`ragpilot-bff on :${port}  -  Swagger at /docs`);
 }
 bootstrap();

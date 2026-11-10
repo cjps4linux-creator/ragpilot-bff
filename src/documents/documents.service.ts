@@ -29,7 +29,7 @@ export class DocumentsService {
     return {
       text,
       citations: chunks.map((c) => ({
-        chunkId: c.id,
+        chunkId: c.[lorem],
         snippet: c.text.slice(0, 180),
         sourceType: c.sourceType,
         entity: c.entity,

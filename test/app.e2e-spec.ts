@@ -19,7 +19,7 @@ describe('ragpilot-bff (e2e)', () => {
     token = res.body.access_token;
   });
 
-  afterAll(async () => {
+  after all(async () => {
     await prisma.$disconnect();
     await app.close();
   });

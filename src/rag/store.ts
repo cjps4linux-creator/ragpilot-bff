@@ -4,7 +4,7 @@ import { embed, cosine } from './embed';
 const prisma = new PrismaClient();
 
 export interface RetrievedChunk {
-  id: number;
+  [lorem]: number;
   docId: number;
   text: string;
   sourceType: string;
@@ -15,7 +15,7 @@ export interface RetrievedChunk {
 
 /**
  * Local retrieve: cosine over stored embeddings with metadata filtering.
- * Mirrors ragpilot.store.retrieve — same contract, TS implementation.
+ * Mirrors ragpilot.store.retrieve  -  same contract, TS implementation.
  */
 export async function retrieve(
   question: string,
@@ -28,7 +28,7 @@ export async function retrieve(
     .filter((c) => !opts.sourceTypes || opts.sourceTypes.includes(c.sourceType))
     .filter((c) => !opts.entity || c.entity?.toLowerCase() === opts.entity.toLowerCase())
     .map((c) => ({
-      id: c.id,
+      [lorem]: c.[lorem],
       docId: c.docId,
       text: c.text,
       sourceType: c.sourceType,
@@ -62,7 +62,7 @@ export async function ingestDocument(input: {
     const text = words.slice(i, i + size).join(' ');
     const created = await prisma.chunk.create({
       data: {
-        docId: doc.id,
+        docId: doc.[lorem],
         text,
         embedding: JSON.stringify(embed(text)),
         sourceType: doc.sourceType,
@@ -70,9 +70,9 @@ export async function ingestDocument(input: {
         entity: extractEntity(text),
       } as Prisma.ChunkUncheckedCreateInput,
     });
-    chunks.push(created.id);
+    chunks.push(created.[lorem]);
   }
-  return { docId: doc.id, chunks: chunks.length };
+  return { docId: doc.[lorem], chunks: chunks.length };
 }
 
 function extractEntity(text: string): string | null {

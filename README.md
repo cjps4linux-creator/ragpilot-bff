@@ -1,14 +1,14 @@
-# ragpilot-bff — NestJS BFF for the ragpilot RAG contract
+# ragpilot-bff  -  NestJS BFF for the ragpilot RAG contract
 
 A **Backend-for-Frontend** in NestJS that wraps the [ragpilot](https://github.com/cjps4linux-creator/ragpilot)
 RAG contract: ingest → embed → retrieve → cite → ground → evaluate. Built to demonstrate
-production NestJS discipline — modules, DI, guards, interceptors-style piping, Swagger/OpenAPI,
-Prisma, JWT auth, and tested e2e — for roles that ask for **NestJS / TypeScript / Node.js**.
+production NestJS discipline  -  modules, DI, guards, interceptors-style piping, Swagger/OpenAPI,
+Prisma, JWT auth, and tested e2e  -  for roles that ask for **NestJS / TypeScript / Node.js**.
 
 ## Stack
-- **NestJS 10** — modules, controllers, services, dependency injection
-- **Prisma + SQLite** (swap `DATABASE_URL` for PostgreSQL in prod) — documents + chunks
-- **JWT guard** (`@nestjs/jwt`) — `/auth/token` issues, `JwtAuthGuard` protects ingest
+- **NestJS 10**  -  modules, controllers, services, dependency injection
+- **Prisma + SQLite** (swap `DATABASE_URL` for PostgreSQL in prod)  -  documents + chunks
+- **JWT guard** (`@nestjs/jwt`)  -  `/auth/token` issues, `JwtAuthGuard` protects ingest
 - **Swagger / OpenAPI** at `/docs` (spec at `/docs-json`)
 - **ValidationPipe** (global, `whitelist: true`) + `class-validator` DTOs
 - **Vitest** e2e (guard 401, ingest+query+citations, OpenAPI) + unit (embed)
